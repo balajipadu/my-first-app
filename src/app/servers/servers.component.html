@@ -1,0 +1,20 @@
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()"> Add Server</button>
+<!-- <p>{{allowNewServer}}</p>  this is String interpolation-->
+
+<p *ngIf="serverCreated"> Server was created, Server name is {{serverName}} </p>
+<br>
+<!--  the hash here reflects the local reference
+    <p *ngIf="serverCreated; else noServer"> Server was created, Server name is {{serverName}} </p>
+<ng-template #noServer>
+    <p>No server was createed</p>
+</ng-template> -->
+<br>
+<input type="text" class="form-control" (input)="onServerName($event)"><br>
+<!-- this below is two way binding and we need the forms module to use the ngModel
+<input type="text" class="form-control" [(ngModel)]="serverName"> <br> -->
+<br>
+<p> {{serverName}} </p>
+<p [innerText]="allowNewServer"></p> <!-- this is Property Binding -->
+<br>
+<!-- <p> {{serverCreationStatus}} </p> -->
+<app-server *ngFor="let server of servers"></app-server>
